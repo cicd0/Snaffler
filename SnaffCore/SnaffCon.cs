@@ -105,6 +105,7 @@ namespace SnaffCore
                 DomainDfsDiscovery();
             }
 
+            // -i
             if (MyOptions.PathTargets.Count == 0 && MyOptions.ComputerTargets == null)
             {
                 if (MyOptions.DfsSharesDict.Count == 0)

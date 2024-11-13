@@ -58,6 +58,7 @@ namespace SnaffCore.Classifiers
         StartsWith
     }
 
+    // Rule order, Discard first
     public enum MatchAction
     {
         Discard,

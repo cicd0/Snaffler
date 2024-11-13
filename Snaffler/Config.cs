@@ -389,6 +389,7 @@ namespace Snaffler
 
                 if (parsedConfig.ClassifierRules.Count <= 0)
                 {
+                    // if null, use the default (embedded) rule set
                     if (String.IsNullOrWhiteSpace(parsedConfig.RuleDir))
                         {
                         // get all the embedded toml file resources
@@ -416,6 +417,8 @@ namespace Snaffler
                     }
                     else
                     {
+                        // 1. the The returned file names are appended to the supplied parameter path (argv[0])
+                        // 2. and the order of the returned file names is not guaranteed;
                         string[] tomlfiles = Directory.GetFiles(parsedConfig.RuleDir, "*.toml", SearchOption.AllDirectories);
                         StringBuilder sb = new StringBuilder();
                         foreach (string tomlfile in tomlfiles)
@@ -432,6 +435,7 @@ namespace Snaffler
                     }
                 }
 
+                // MYTD: grouped
                 parsedConfig.PrepareClassifiers();
             }
             catch (Exception e)

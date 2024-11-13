@@ -14,14 +14,17 @@ namespace SnaffCore.FileScan
         {
             Mq = BlockingMq.GetMq();
         }
+        // MYTD: TreeWalker -> ScanFile -> FileClassifier
         public void ScanFile(string file)
         {
             try
             {
+                // FileInfo does not open a stream yet
                 FileInfo fileInfo = new FileInfo(file);
                 // send the file to all the classifiers.
                 foreach (ClassifierRule classifier in MyOptions.FileClassifiers)
                 {
+                    // MYTD: FileClassifier is the first classifier?
                     FileClassifier fileClassifier = new FileClassifier(classifier);
                     if (fileClassifier.ClassifyFile(fileInfo))
                     {

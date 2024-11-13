@@ -62,7 +62,9 @@ namespace SnaffCore.Classifiers
                                 }
                                 else
                                 {
-                                    fileString = File.ReadAllText(fileInfo.FullName);
+                                    //fileString = File.ReadAllText(fileInfo.FullName);
+                                    fileString = File.ReadAllText(fileInfo.FullName, System.Text.Encoding.UTF8);
+                                    fileString += File.ReadAllText(fileInfo.FullName, System.Text.Encoding.Unicode);
                                 }
 #else
                                 fileString = File.ReadAllText(fileInfo.FullName);

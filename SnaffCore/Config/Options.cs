@@ -23,7 +23,7 @@ namespace SnaffCore.Config
         public bool ScanSysvol { get; set; } = true;
         public bool ScanNetlogon { get; set; } = true;
         public bool ScanFoundShares { get; set; } = true;
-        public int InterestLevel { get; set; } = 0;
+        public int InterestLevel { get; set; } = 0; // Default 0
         public bool DfsOnly { get; set; } = false;
         public bool DfsShareDiscovery { get; set; } = false;
         [Nett.TomlIgnore]
@@ -32,7 +32,7 @@ namespace SnaffCore.Config
         public string CurrentUser { get; set; } = WindowsIdentity.GetCurrent().Name;
         public string RuleDir { get; set; }
 
-        public int TimeOut { get; set; } = 5;
+        public int TimeOut { get; set; } = 1; // this also affect TimedStatusUpdate(); means the program ran for 1 min after everything finished
 
         // Concurrency Options
         public int MaxThreads { get; set; } = 60;

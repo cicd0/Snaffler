@@ -444,6 +444,7 @@ namespace Snaffler
                     matchedstring = message.FileResult.TextResult.MatchedStrings[0];
                     matchcontext = message.FileResult.TextResult.MatchContext;
                     matchcontext = Regex.Replace(matchcontext, @"\r\n?|\n", "\\n"); // Replace newlines with \n for consistent log lines
+                    matchcontext = strEncDefaultToUTF8(matchcontext);
                 }
 
                 return string.Format(fileResultTemplate, triageString, matchedclassifier, canread, canwrite, canmodify, matchedstring, fileSizeString, modifiedStamp,
@@ -515,6 +516,13 @@ namespace Snaffler
             Console.WriteLine(textToWrite);
 
             Console.ResetColor();
+        }
+
+        public static string strEncDefaultToUTF8(string s)
+        {
+            byte[] bytes = System.Text.Encoding.Default.GetBytes(s);
+            s = System.Text.Encoding.UTF8.GetString(bytes);
+            return s; 
         }
 
         public void PrintBanner()

@@ -92,6 +92,7 @@ namespace SnaffCore.Config
             FileClassifiers = (from classifier in ClassifierRules
                                where classifier.EnumerationScope == EnumerationScope.FileEnumeration
                                select classifier).ToList();
+            // MYTD: the result is the Enum order
             FileClassifiers.Sort((x, y) => x.MatchAction.CompareTo(y.MatchAction));
             ContentsClassifiers = (from classifier in ClassifierRules
                                    where classifier.EnumerationScope == EnumerationScope.ContentsEnumeration
